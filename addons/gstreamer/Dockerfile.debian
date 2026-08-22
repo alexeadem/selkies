@@ -41,7 +41,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         libgsl-dev \
         libcairo2-dev \
         libpango1.0-dev \
-        libgdk-pixbuf2.0-dev \
+        libgdk-pixbuf-2.0-dev \
         libsoup2.4-dev \
         libsoup-gnome2.4-dev \
         libgirepository1.0-dev \
@@ -82,7 +82,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         libxv-dev \
         libxtst-dev \
         libxext-dev && \
-        apt-get update && apt-get install --no-install-recommends -y libopenh264-dev libde265-dev svt-av1 libsvtav1enc-dev libsvtav1dec-dev aom-tools libaom-dev && \
+        apt-get update && apt-get install --no-install-recommends -y libopenh264-dev libde265-dev svt-av1 libsvtav1enc-dev aom-tools libaom-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /var/cache/debconf/* /var/log/* /tmp/* /var/tmp/*
 
 # Install GST-Python dependencies, Meson, and Ninja
@@ -96,7 +96,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 # GStreamer monorepo build with prefix for standalone install
 WORKDIR /src
-ARG GSTREAMER_VERSION=1.24.5
+ARG GSTREAMER_VERSION=1.26.2
 RUN export GSTREAMER_EXTRA_ARGS="-Dgst-plugins-bad:libde265=enabled -Dgst-plugins-bad:aom=enabled ${GSTREAMER_EXTRA_ARGS}" && \
     export GSTREAMER_EXTRA_ARGS="-Dgst-plugins-bad:svtav1=enabled ${GSTREAMER_EXTRA_ARGS}" && \
     curl --proto '=https' --tlsv1.2 -fsSL "https://sh.rustup.rs" | sh -s -- -y && \

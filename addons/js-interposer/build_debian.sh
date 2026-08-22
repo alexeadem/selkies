@@ -24,7 +24,7 @@ fi
 SELKIES_VERSION="$GIT_TAG"     # e.g. 0.0.0+243fa6d
 
 TAG=latest
-V=12
+V=${V:-12}
 
 # Decide native arch
 NATIVE_ARCH_RAW=$(uname -m)
@@ -50,7 +50,7 @@ fi
 for ARCH in "${ARCHES[@]}"; do
     IMAGE_TAG="${N}:${TAG}-debian${V}-${ARCH}"
     # echo "Building $IMAGE_TAG for linux/${ARCH}"
-    echo -e "\033[1;38;5;${COLOR}m>>>\033[0m \033[1;38;5;${COLOR}m selkies-js-interposer_${GIT_TAG#v}_debian12_$ARCH.deb\033[0m"
+    echo -e "\033[1;38;5;${COLOR}m>>>\033[0m \033[1;38;5;${COLOR}m selkies-js-interposer_${GIT_TAG#v}_debian${V}_$ARCH.deb\033[0m"
 
     TAG_ARGS=(-t "$IMAGE_TAG")
     # Also keep the old tag name pointing at the native arch image

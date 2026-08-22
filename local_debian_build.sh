@@ -88,13 +88,13 @@ echo -e "\033[1;38;5;${COLOR}m>>>\033[0m \033[1;38;5;${COLOR}m selkies-gstreamer
 
 cd dev
 
-if [ ! -f ./build-gstreamer-debian12.sh ]; then
-    echo "$PWD/build-gstreamer-debian12.sh not found"
+if [ ! -f ./build-gstreamer-debian13.sh ]; then
+    echo "$PWD/build-gstreamer-debian13.sh not found"
     exit 1
 fi
 
 # Pass QEMU down so gstreamer script can do single-arch or multi-arch
-QEMU="$QEMU" ./build-gstreamer-debian12.sh
+QEMU="$QEMU" ./build-gstreamer-debian13.sh
 
 cd ..
 [ "$(ls -A ./addons/gstreamer/dist)" ] && mv addons/gstreamer/dist/* dist/
