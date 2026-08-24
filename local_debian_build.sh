@@ -69,8 +69,12 @@ if [ ! -f ./build_debian.sh ]; then
     exit 1
 fi
 
-# Pass QEMU down so build_debian.sh can do single-arch or multi-arch
-QEMU="$QEMU" ./build_debian.sh
+# Pass QEMU down so build_debian.sh can do single-arch or multi-arch.
+# V=13 is explicit and load-bearing: it both names the output file and selects
+# the base image (Dockerfile.debian_debpkg: FROM debian:${DISTRIB_RELEASE}).
+# Without it the default builds bookworm and names it _debian12_, which the
+# consuming Dockerfile.plasma does not COPY -- a late, confusing failure.
+QEMU="$QEMU" V="${V:-13}" ./build_debian.sh
 cd -
 ls -1 addons/js-interposer/
 

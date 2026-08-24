@@ -24,7 +24,7 @@ fi
 SELKIES_VERSION="$GIT_TAG"     # e.g. 0.0.0+243fa6d
 
 TAG=latest
-V=${V:-12}
+V=${V:-13}
 
 # Decide native arch
 NATIVE_ARCH_RAW=$(uname -m)
